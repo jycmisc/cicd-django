@@ -1,5 +1,7 @@
-# Github Syntax Reference https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#about-yaml-syntax-for-workflows
-
+# Github Syntax Reference 
+# 1. https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#about-yaml-syntax-for-workflows
+# 2. https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idneeds
+# 3. https://docs.github.com/en/actions/guides/storing-workflow-data-as-artifacts
 
 name: Django    # workflow name
 
@@ -29,3 +31,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "This is a deploy step"
+
+  artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+      - run: |
+          echo "artifact job ouput" > output.txt
+      - name: upload result for artifact job
+        uses: actions/upload-artifact@v2
+        with:
+          name: result
+          path: output.txt
+  
+  
