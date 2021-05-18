@@ -35,7 +35,6 @@ jobs:
   artifact:
     runs-on: ubuntu-latest
     steps:
-      - shell: bash
       - run: |
           echo "artifact job ouput" > output.txt
       - name: upload result for artifact job
